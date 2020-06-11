@@ -8,9 +8,9 @@ public class ProductoRepository {
 
 	private Map<String, Producto> almacen;
 	
-	public ProductoRepository(Map<String, Producto> almacen2) {
+	public ProductoRepository(Map<String, Producto> almacen) {
 		super();
-		this.almacen = almacen2;
+		this.almacen = almacen;
 	}
 
 	// CRUD

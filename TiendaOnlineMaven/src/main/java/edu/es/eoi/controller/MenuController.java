@@ -1,8 +1,10 @@
 package edu.es.eoi.controller;
 
-import edu.es.eoi.App;
+import java.io.FileNotFoundException;
+
 import edu.es.eoi.entity.Pedido;
 import edu.es.eoi.entity.Producto;
+import edu.es.eoi.repository.ProductoRepository;
 import edu.es.eoi.view.CarritoView;
 import edu.es.eoi.view.FacturaView;
 import edu.es.eoi.view.ListadoProductosView;
@@ -11,13 +13,15 @@ import edu.es.eoi.view.PedidoView;
 import edu.es.eoi.view.ProductoView;
 
 public class MenuController {
+	
+	private static ProductoRepository repository;
 
-	public static void gestionaOpcionMenu(int opcion) {
+	public static void gestionaOpcionMenu(int opcion) throws FileNotFoundException {
 
 		switch (opcion) {
 		case 0:
 			System.out.println("Navegar a menu 0");
-			ListadoProductosView.imprimirProductos(App.almacen);
+			ListadoProductosView.imprimirProductos(repository.cargarProductos());
 			MenuPrincipalView.imprimirMenu();
 			break;
 		case 1:

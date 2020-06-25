@@ -1,11 +1,12 @@
 package edu.es.eoi.view;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import edu.es.eoi.controller.MenuController;
 
 public class MenuPrincipalView {
 
-	public static void imprimirMenu() {
+	public static void imprimirMenu() throws FileNotFoundException {
 
 		System.out.println("Bienvenido a mi tienda, selecciona opción: ");
 		System.out.println("0-Listar productos");

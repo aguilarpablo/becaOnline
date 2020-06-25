@@ -1,7 +1,5 @@
 package edu.es.eoi.service;
 
-import java.util.Map;
-
 import edu.es.eoi.entity.Carrito;
 import edu.es.eoi.entity.ListaDeseos;
 import edu.es.eoi.entity.Producto;
@@ -9,17 +7,16 @@ import edu.es.eoi.repository.ProductoRepository;
 
 public class ProductoService {
 	
-	private Map<String, Producto> almacen;
 	private Carrito carrito;
 	private ListaDeseos deseos;
 	private ProductoRepository repository;
 
 
-	public ProductoService(Map<String, Producto> almacen, Carrito carrito, ListaDeseos deseos) {
+	public ProductoService(Carrito carrito, ListaDeseos deseos) {
 		super();
 		this.carrito = carrito;
 		this.deseos = deseos;
-		this.repository = new ProductoRepository(almacen);
+		this.repository = new ProductoRepository();
 	}
 	
 	public void comprar(Producto producto) {
@@ -31,11 +28,11 @@ public class ProductoService {
 		}
 	}
 	
-	public Producto buscar(String referencia) {
+	public Producto buscar(String referencia) throws Exception {
 		return repository.read(referencia);
 	}
 	
-	public void comparar(String referencia1, String referencia2) {
+	public void comparar(String referencia1, String referencia2) throws Exception {
 		
 		Producto producto1 = repository.read(referencia1);
 		Producto producto2 = repository.read(referencia2);
@@ -55,14 +52,6 @@ public class ProductoService {
 		deseos.getProductos().add(producto);
 	}
 
-	public Map<String, Producto> getAlmacen() {
-		return almacen;
-	}
-
-	public void setAlmacen(Map<String, Producto> almacen) {
-		this.almacen = almacen;
-	}
-
 	public Carrito getCarrito() {
 		return carrito;
 	}
@@ -78,6 +67,16 @@ public class ProductoService {
 	public void setDeseos(ListaDeseos deseos) {
 		this.deseos = deseos;
 	}
+
+	public ProductoRepository getRepository() {
+		return repository;
+	}
+
+	public void setRepository(ProductoRepository repository) {
+		this.repository = repository;
+	}
+	
+	
 
 	
 }

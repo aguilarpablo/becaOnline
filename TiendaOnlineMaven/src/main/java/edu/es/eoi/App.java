@@ -22,7 +22,7 @@ public class App {
 	public static Map<String, Pedido> pedidos;
 
 	public static void main(String[] args) {
-///
+
 		try {
 			inicializarApp();
 

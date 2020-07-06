@@ -1,54 +1,49 @@
 package edu.es.eoi.entity;
 
-public class Producto {
+import java.util.List;
 
-	private String nombre;
-	private String referencia;
-	private double precio;
-	private String descripcion;
-	private int stock;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "productos")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Producto {
 	
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getReferencia() {
-		return referencia;
-	}
-	public void setReferencia(String referencia) {
-		this.referencia = referencia;
-	}
-	public double getPrecio() {
-		return precio;
-	}
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	public int getStock() {
-		return stock;
-	}
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
+	@Id
+	@Column
+	private String referencia;
+	@Column
+	private String nombre;
+	@Column
+	private double precio;
+	@Column
+	private String descripcion;
+	@Column
+	private int stock;
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "productos")
+	private List<Pedido> pedidos;
 		
 	public String getDetalle() {		
 		return this.nombre.concat(", "+this.descripcion);
 	}
-	public Producto(String nombre, String referencia, double precio, String descripcion, int stock) {
-		super();
-		this.nombre = nombre;
-		this.referencia = referencia;
-		this.precio = precio;
-		this.descripcion = descripcion;
-		this.stock = stock;
+	
+	@Override
+	public String toString() {
+		return "Producto [nombre=" + nombre + ", referencia=" + referencia + ", precio=" + precio + ", descripcion="
+				+ descripcion + ", stock=" + stock + "]";
 	}
 	
 }

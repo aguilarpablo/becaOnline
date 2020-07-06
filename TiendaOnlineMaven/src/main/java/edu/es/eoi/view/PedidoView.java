@@ -1,25 +1,20 @@
 package edu.es.eoi.view;
 
-import java.util.Scanner;
-
-import edu.es.eoi.App;
 import edu.es.eoi.entity.Pedido;
+import edu.es.eoi.entity.Producto;
 
 public class PedidoView {
 	
-	public static Pedido introduceNumeroPedido() {
-
-		System.out.println("Introduce el número del pedido: ");
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		return App.pedidoController.buscar(scanner.next());
-
-	}
-
-	public static void imprimirPedido(Pedido pedido) {
+	public static void imprimePedido(Pedido pedido) {
 		
-		System.out.println("Información del pedido " + pedido.getNumeroPedido());
-		System.out.println(pedido);
+		System.out.println("PEDIDO REF: " + pedido.getReferencia());
+		System.out.println("CONTENIDO: ");
+		double cantidad=0.0;
+		for (Producto p : pedido.getProductos()) {
+			System.out.println(p);
+			cantidad=cantidad+p.getPrecio();
+		}		
+		System.out.println("TOTAL PEDIDO: " + cantidad);
 		
 	}
 }

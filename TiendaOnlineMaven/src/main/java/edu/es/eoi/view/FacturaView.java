@@ -25,8 +25,8 @@ public class FacturaView {
 		Scanner scanner = new Scanner(System.in);
 		int opcion = scanner.nextInt();
 		if (opcion == 1) {
-			App.pedidoController.comprar(App.carrito);
-			App.pedidoController.eliminarCarrito(App.carrito);
+			//App.pedidoController.comprar(App.carrito);
+			//App.pedidoController.eliminarCarrito(App.carrito);
 		} 
 	}
 
